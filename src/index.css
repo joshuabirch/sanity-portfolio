@@ -1,13 +1,33 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.2/src/index.min.js');
+@import url('https://use.typekit.net/qmw4cxb.css');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #202020;
+  overflow: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.blenny {
+  font-family: blenny, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.paralucent {
+  font-family: paralucent, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.prose img {
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.jb-bg {
+  background-color: #202020;
+}
+
+canvas {
+  margin: 0;
 }
