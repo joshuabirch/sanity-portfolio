@@ -53,21 +53,6 @@ canvas {
   height: 100%;
 }
 
-.load-screen1 {
-  position: relative;
-  padding-top: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: #e4cb58;
-  width: 100%;
-  height: 0%;
-}
-
-.Headd {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .jbd-bg-blue {
   background-color: #3766FF; 
 }
@@ -82,4 +67,27 @@ canvas {
 
 .jbd-bg-white {
   background-color: #fff;
+}
+
+.wrapper {
+  width: 150px;
+  height: 150px;
+}
+
+.box-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  border-radius: 100%;
+}
+
+.item {
+  width: inherit;
+  height: inherit;
+  background: #ffde00;
+  background: -webkit-linear-gradient(0deg, #ffde00 0%, #3766ff 100%);
+  background: linear-gradient(0deg, #ffde00 0%, #3766ff 100%);
+  box-shadow: 0 0 5px 10px #ffde00;
 }

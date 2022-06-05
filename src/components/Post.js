@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import sanityClient from '../client.js'
 import {Link} from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function Post() {
 
@@ -24,7 +25,16 @@ function Post() {
   }, [])
 
   return (
-    <main className='min-h-screen p-12'>
+    <motion.main 
+      className='min-h-screen p-12'
+
+      initial={{width: 0}}
+      animate={{width: "100%"}}
+      exit={{
+        x: window.innerWidth,
+        transition: {duration: 0.1} 
+      }}
+    >
       <section className='container mx-auto'>
         <h1 className='blenny text-white text-8xl flex justify-center mb-12 uppercase'>✨ Blog</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -46,7 +56,7 @@ function Post() {
           ))}
         </div>
       </section>
-    </main>
+    </motion.main>
   )
 }
 

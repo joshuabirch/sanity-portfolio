@@ -1,46 +1,13 @@
 import React, { useRef, useState, useEffect } from "react"
-import { gsap, Power3, Power4 } from "gsap"
 // import fx from 'glfx'
 // import $ from 'jquery'
 import homeAsset from '../assets/home-asset.png'
+import logo from '../assets/logo.png'
+import { motion, useViewportScroll, useTransform } from 'framer-motion'
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
-
-  let screen = useRef(null)
-  let body = useRef(null)
-
-  useEffect(() => {
-    var tl = new gsap.timeline()
-    tl.to(screen, {
-      duration: 1.2,
-      width: "100%",
-      left: "0%",
-      ease: Power3.easeInOut,
-    })
-    tl.to(screen, {
-      duration: 1,
-      left: "100%",
-      ease: Power3.easeInOut,
-      delay: 0.3,
-    })
-    tl.set(screen, {left:"-100%"})
-    gsap.to(body, { css: {
-      opacity: 1,
-      pointerEvents: 'auto', 
-      },
-      ease: Power4.easeInOut, 
-      duration: .3}).delay(2)
-    return () => {
-      gsap.to(body, { css: {
-        opacity: 0,
-        pointerEvents: 'none',
-        },
-        ease: Power4.easeInOut,
-        duration: 1
-      })
-    }
-  })
 
   // const [sourceImg, setSourceImg] = useState(null);
   // const canvasRef = React.useRef(null); 
@@ -74,36 +41,66 @@ const Home = () => {
   //   }
   // }, [sourceImg]);
 
-  
+  const { scrollYProgress } = useViewportScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 5])
 
   return (
-    <React.Fragment>
-      <div className="load-container">
-        <div className="load-screen" ref={(el) => (screen = el)}>
-        </div>
-      </div>
-    <div className="container mx-auto flex justify-center">
-      <div ref={(el) => (body = el)} className="Headd">
+    <motion.div 
+      className="container mx-auto flex justify-center"
+
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{
+        x: window.innerWidth,
+        transition: { duration: 0.1 } 
+      }}
+    >
+      <div>
+
         {/* <canvas ref={canvasRef} /> */}
         <section className="flex justify-center min-h-screen">
           <img src={homeAsset} className='h-full w-5/6 lg:py-10 md:py-5 sm:py-0' />
         </section>
+
+        <section className="min-h-screen">
+          <div className="container mx-auto px-12">
+            <img src={logo} className='w-1/2 h-full mx-auto mb-12' />
+              <div className="grid grid-cols-2">
+                <div className="flex justify-center">
+                  <div className="wrapper ml-36">
+                    <motion.div className="box-container" style={{ scale }}>
+                      <motion.div className="item"></motion.div>
+                    </motion.div>
+                  </div>
+                </div>
+                <p className='paralucent text-2xl text-white pr-24'>
+                Hey! I'm a UX/UI Designer based in Birmingham, United Kingdom. I specialise in Human-Computer Interaction, Accessibility and UX development. I currently work within the Web & App space with a view to move into the games industry in the future.
+                <Link to='/project' className="block border-white border-2 rounded-full py-4 px-6 mt-8 w-1/2 text-center">View My Projects</Link>
+                </p>
+                
+                </div>
+          </div>
+          
+          
+        </section>
+
+
         <section className="min-h-screen">
           <div className="rounded-full jbd-bg-blue blenny uppercase w-full py-8 px-12 text-7xl my-3">ux research</div>
           <div className="rounded-full jbd-bg-yellow blenny uppercase w-full py-8 px-12 text-7xl my-3">ux design</div>
           <div className="rounded-full jbd-bg-green blenny uppercase w-full py-8 px-12 text-7xl my-3">ui design</div>
           <div className="rounded-full jbd-bg-white blenny uppercase w-full py-8 px-12 text-7xl my-3">web development</div>
         </section>
+
       </div>
-    </div>
-    </React.Fragment>
+    </motion.div>
   );
 };
 
 export default Home;
 
-const drawCanvas = (ctx, source) => {
-  if (!source) return;
+// const drawCanvas = (ctx, source) => {
+//   if (!source) return;
 
-  ctx.drawImage(source, 0, 0);
-};
+//   ctx.drawImage(source, 0, 0);
+// };

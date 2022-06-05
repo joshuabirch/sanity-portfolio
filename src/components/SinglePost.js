@@ -3,6 +3,7 @@ import sanityClient from '../client.js'
 import { useParams } from 'react-router-dom'
 import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
+import { motion } from 'framer-motion'
 
 
 const builder = imageUrlBuilder(sanityClient)
@@ -38,7 +39,16 @@ function SinglePost() {
   if (!singlePost) return <div>Loading...</div>
 
   return (
-    <main className='min-h-screen p-12'>
+    <motion.main 
+      className='min-h-screen p-12'
+
+      initial={{width: 0}}
+      animate={{width: "100%"}}
+      exit={{
+        x: window.innerWidth,
+        transition: {duration: 0.1} 
+      }}
+    >
       <article className='container mx-auto'>
         <header className='relative'>
           <div className='absolute h-full w-full flex items-center justify-center p-8'>
@@ -69,7 +79,7 @@ function SinglePost() {
           />
         </div>
       </article>
-    </main>
+    </motion.main>
   )
 }
 
