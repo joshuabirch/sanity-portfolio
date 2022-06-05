@@ -31,3 +31,55 @@ body {
 canvas {
   margin: 0;
 }
+
+.load-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.load-screen {
+  position: relative;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #fff;
+  width: 0%;
+  height: 100%;
+}
+
+.load-screen1 {
+  position: relative;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #e4cb58;
+  width: 100%;
+  height: 0%;
+}
+
+.Headd {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.jbd-bg-blue {
+  background-color: #3766FF; 
+}
+
+.jbd-bg-yellow {
+  background-color: #FFDE00; 
+}
+
+.jbd-bg-green {
+  background-color: #06FF00; 
+}
+
+.jbd-bg-white {
+  background-color: #fff;
+}
