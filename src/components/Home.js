@@ -42,11 +42,13 @@ const Home = () => {
   // }, [sourceImg]);
 
   const { scrollYProgress } = useViewportScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 5])
+  const x = useTransform(scrollYProgress, [0, 0.7, 1], [-1000, 0, 0])
+  const scale = useTransform(scrollYProgress, [0, 0, 1], [0, .5, 2])
+
+  const opacity = useTransform(scrollYProgress, [0.2, 0.3, 0.9, 1], [0, .5, 1, 1])
 
   return (
     <motion.div 
-      className="container mx-auto flex justify-center"
 
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
@@ -62,35 +64,52 @@ const Home = () => {
           <img src={homeAsset} className='h-full w-5/6 lg:py-10 md:py-5 sm:py-0' />
         </section>
 
-        <section className="min-h-screen">
-          <div className="container mx-auto px-12">
-            <img src={logo} className='w-1/2 h-full mx-auto mb-12' />
-              <div className="grid grid-cols-2">
-                <div className="flex justify-center">
-                  <div className="wrapper ml-36">
-                    <motion.div className="box-container" style={{ scale }}>
-                      <motion.div className="item"></motion.div>
+        <section className="intro">
+          
+          <div className="div1">
+            <div style={{ height:"3500px" }}>
+              <div className="div2">
+                <div className="container">
+                <div className="right">
+                    <motion.div style={{x, scale, opacity}}>
+                      <motion.div 
+                        className="circle"
+                        animate={{
+                          scale: [.5,1,1,.5,.5],
+                          rotate: [0, 0, 270, 270, 0],
+                          borderRadius: ["10%", "10%", "50%", "50%", "10%"],
+                        }}
+                        transition={{
+                          duration: 2,
+                          ease: "easeInOut",
+                          times: [0, 0.2, 0.5, 0.8, 1],
+                          repeat: Infinity,
+                          repeatDelay: 1
+                        }}
+                      />
                     </motion.div>
                   </div>
+                  <div className="left">
+                  <img src={logo} className='w-5/6 mb-12' />
+                  <h1 className="paralucent text-xl text-white">Hey! I'm a UX/UI Designer based in Birmingham, United Kingdom. I specialise in Human-Computer Interaction, Accessibility and UX development. I currently work within the Web & App space with a view to move into the games industry in the future.</h1>
+                  </div>
+                  
                 </div>
-                <p className='paralucent text-2xl text-white pr-24'>
-                Hey! I'm a UX/UI Designer based in Birmingham, United Kingdom. I specialise in Human-Computer Interaction, Accessibility and UX development. I currently work within the Web & App space with a view to move into the games industry in the future.
-                <Link to='/project' className="block border-white border-2 rounded-full py-4 px-6 mt-8 w-1/2 text-center">View My Projects</Link>
-                </p>
-                
-                </div>
+              </div>
+
+            </div>
           </div>
           
           
         </section>
 
 
-        <section className="min-h-screen">
+        {/* <section className="min-h-screen">
           <div className="rounded-full jbd-bg-blue blenny uppercase w-full py-8 px-12 text-7xl my-3">ux research</div>
           <div className="rounded-full jbd-bg-yellow blenny uppercase w-full py-8 px-12 text-7xl my-3">ux design</div>
           <div className="rounded-full jbd-bg-green blenny uppercase w-full py-8 px-12 text-7xl my-3">ui design</div>
           <div className="rounded-full jbd-bg-white blenny uppercase w-full py-8 px-12 text-7xl my-3">web development</div>
-        </section>
+        </section> */}
 
       </div>
     </motion.div>
